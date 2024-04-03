@@ -26,15 +26,21 @@ namespace ejercicio6Registro.servicios
             Console.WriteLine("Inserte el texto por el que lo quiera sustituir");
             string texto = Console.ReadLine();
 
+
             lineas = File.ReadAllLines(archivo);
 
             try { 
+
                 if (lineaAModificar >= 0 && lineaAModificar <= lineas.Length)
                 {
                     //ERROR 1:C --> NO COGE LA LINEA NUEVA POR LA QUE LA QUIERO CAMBIAR
                     lineas[lineaAModificar - 1] = texto;
                 
 
+                }
+                else
+                {
+                    Console.WriteLine("ERROR[]: Ha seleccionado una linea fuera de rango");
                 }
             }
             catch (IOException ex) 
@@ -74,18 +80,17 @@ namespace ejercicio6Registro.servicios
                     }
                     else
                     {
-                        Console.WriteLine("La posicion que ha insertado no existe");
+                        Console.WriteLine("ERROR[]: La posicion que ha insertado no existe");
                      
                     }
 
                 }
                 else
                 {
-                    Console.WriteLine("La linea que ha insertado no existe");
-                   
+                    Console.WriteLine("ERROR[]: Ha seleccionado una linea fuera de rango");
                 }
 
-                
+
 
             }
             catch (IOException e)
