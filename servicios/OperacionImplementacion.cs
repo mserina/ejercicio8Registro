@@ -28,14 +28,20 @@ namespace ejercicio6Registro.servicios
 
             lineas = File.ReadAllLines(archivo);
 
-
-            if (lineaAModificar >= 0 && lineaAModificar <= lineas.Length)
-            {
-                //ERROR 1:C --> NO COGE LA LINEA NUEVA POR LA QUE LA QUIERO CAMBIAR
-                lineas[lineaAModificar - 1] = texto;
+            try { 
+                if (lineaAModificar >= 0 && lineaAModificar <= lineas.Length)
+                {
+                    //ERROR 1:C --> NO COGE LA LINEA NUEVA POR LA QUE LA QUIERO CAMBIAR
+                    lineas[lineaAModificar - 1] = texto;
                 
 
+                }
             }
+            catch (IOException ex) 
+            {
+                Console.WriteLine("Error IO: " + ex.Message);
+            }
+
 
             return lineas;
         }

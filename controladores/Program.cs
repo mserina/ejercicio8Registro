@@ -9,18 +9,28 @@ namespace ejercicio6Ficheros.controladores
 
         public static void Main(string[] args)
         {
-
-           
-
             string rutaArchivo = "C:\\Users\\csi23-mserina\\Desktop\\REGISTRO_VC.txt";
             
-            //ERROR 1:C --> NO COGE LA LINEA NUEVA POR LA QUE LA QUIERO CAMBIAR
-            string[] lineas = File.ReadAllLines(rutaArchivo);
+            string[] lineas = null;
+
+            bool cerrarMenu = false;
+
+            try
+            {
+
+               lineas = File.ReadAllLines(rutaArchivo);
+
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("ERROR IO: " + e.Message);
+                cerrarMenu = true;
+            }
+            
 
             MenuInterfaz mi = new MenuImplementacion();
             OperacionInterfaz op = new OperacionImplementacion();
             int opcionSeleccionada = 0;
-            bool cerrarMenu = false;
 
             while (!cerrarMenu)
             {
